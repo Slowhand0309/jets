@@ -122,6 +122,7 @@ module Jets::Core
     meth = handler.split('.').last
 
     puts "jets/core.rb lambda_context #{lambda_context.inspect}"
+    puts "jets/core.rb lambda_context.class #{lambda_context.class}"
 
     lambda_context.instance_eval %Q|
       def #{meth}(event:, context: )
