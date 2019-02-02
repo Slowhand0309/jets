@@ -120,6 +120,9 @@ module Jets::Core
   # Example: Jets.handler(self, "handlers/controllers/posts_controller.index")
   def handler(lambda_context, handler)
     meth = handler.split('.').last
+
+    puts "jets/core.rb lambda_context #{lambda_context.inspect}"
+
     lambda_context.send(:define_method, meth) do |event:, context:|
       Jets.process(event, context, handler)
     end
