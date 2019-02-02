@@ -123,7 +123,7 @@ module Jets::Core
 
     puts "jets/core.rb lambda_context #{lambda_context.inspect}"
 
-    lambda_context.class_eval %Q|
+    lambda_context.instance_eval %Q|
       def #{meth}(event:, context: )
         Jets.process(event, context, "#{handler}")
       end
