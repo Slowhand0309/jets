@@ -123,9 +123,15 @@ module Jets::Core
 
     puts "jets/core.rb lambda_context #{lambda_context.inspect}"
 
-    lambda_context.send(:define_method, meth) do |event:, context:|
-      Jets.process(event, context, handler)
-    end
+    lambda_context.class_eval %Q|
+      def #{meth}(event:, context: )
+        Jets.process(event, context, "#{handler}")
+      end
+    |
+
+    # lambda_context.send(:define_method, meth) do |event:, context:|
+    #   Jets.process(event, context, handler)
+    # end
   end
 
   def once
