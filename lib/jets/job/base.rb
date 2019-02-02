@@ -12,12 +12,6 @@ class Jets::Job
     class << self
       def process(event, context, meth)
         job = new(event, context, meth)
-
-        puts "job/base.rb event #{event}"
-        puts "job/base.rb context #{context}"
-        puts "job/base.rb meth #{meth}"
-        puts "job/base.rb job #{job.inspect}"
-
         job.send(meth)
       end
 
