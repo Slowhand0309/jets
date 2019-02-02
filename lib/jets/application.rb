@@ -116,6 +116,9 @@ class Jets::Application
     config.encoding = ActiveSupport::OrderedOptions.new
     config.encoding.default = "utf-8"
 
+    # So tried to defined this in the jets/mailer.rb Turbine only but jets new requires it
+    config.action_mailer = ActiveSupport::OrderedOptions.new
+
     config
   end
 
